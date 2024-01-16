@@ -25,8 +25,9 @@ export default defineComponent({
             { linkId: 1, linkName: "Home", path: { name: "home" } },
             { linkId: 2, linkName: "Signup", path: { name: "signup" } },
             { linkId: 3, linkName: "Login", path: { name: "login" } },
-            { linkId: 4, linkName: "Dashboard", path: { name: "dashboard" } },
-            { linkId: 5, linkName: "FAQs", path: { name: "faqs" } },
+            { linkId: 4, linkName: "FAQs", path: { name: "faqs" } },
+            { linkId: 5, linkName: "Community", path: { name: "community" } },
+            { linkId: 6, linkName: "Dashboard", path: { name: "dashboard" } },
         ])
 
         console.log(route.name);
@@ -40,7 +41,7 @@ export default defineComponent({
         }
 
         function displayDashLink(path: String) {
-            return path !== "dashboard" || localStorage.getItem('userData') !== null;
+            return (path !== "dashboard" && path !== "community") || localStorage.getItem('userData') !== null;
         }
 
         return {

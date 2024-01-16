@@ -5,6 +5,7 @@ import Login from "../views/Login.vue"
 import Signup from "../views/Signup.vue"
 import FAQs from "../views/FAQs.vue"
 import Dashboard from "../views/Dashboard.vue"
+import Community from "../views/Community.vue"
 import Account from "../views/Account.vue"
 import Deposit from "../views/Deposit.vue"
 import Withdraw from "../views/Withdraw.vue"
@@ -19,6 +20,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: "/signup", name: "signup", component: Signup },
   { path: "/faqs", name: "faqs", component: FAQs },
   { path: "/dashboard", name: "dashboard", component: Dashboard },
+  { path: "/community", name: "community", component: Community },
   { path: "/account", name: "account", component: Account },
   { path: "/account/deposit", name: "deposit", component: Deposit },
   { path: "/account/withdraw", name: "withdraw", component: Withdraw },
