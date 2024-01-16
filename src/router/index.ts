@@ -1,24 +1,34 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import Home from "../views/Home.vue"
+import Admin from "../views/Admin.vue"
+import Login from "../views/Login.vue"
+import Signup from "../views/Signup.vue"
+import FAQs from "../views/FAQs.vue"
+import Dashboard from "../views/Dashboard.vue"
+import Account from "../views/Account.vue"
+import Deposit from "../views/Deposit.vue"
+import Withdraw from "../views/Withdraw.vue"
+import Transfer from "../views/Transfer.vue"
+import PreviousTransactions from "../views/PreviousTransactions.vue"
+import Profile from "../views/Profile.vue"
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  { path: "/", name: "home", component: Home },
+  { path: "/admin", name: "admin", component: Admin },
+  { path: "/login", name: "login", component: Login },
+  { path: "/signup", name: "signup", component: Signup },
+  { path: "/faqs", name: "faqs", component: FAQs },
+  { path: "/dashboard", name: "dashboard", component: Dashboard },
+  { path: "/account", name: "account", component: Account },
+  { path: "/account/deposit", name: "deposit", component: Deposit },
+  { path: "/account/withdraw", name: "withdraw", component: Withdraw },
+  { path: "/account/transfer", name: "transfer", component: Transfer },
+  { path: "/account/previoustransactions", name: "previoustransactions", component: PreviousTransactions },
+  { path: "/profile", name: "profile", component: Profile },
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(),
   routes
 })
 
