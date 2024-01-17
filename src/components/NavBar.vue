@@ -1,12 +1,20 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-lg">
-            <div>
-                <ul class="navbar-nav">
-                    <li class="nav-item" v-for="link in links" :key="link.id">
-                        <router-link v-if="displayDashLink(link.path.name)" :class="activeLink(link.path.name)" :to="link.path">{{ link.linkName }}</router-link>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+            <div class="container">
+                <a class="navbar-brand" href="#">KMWALLET</a>
+
+                <button class="navbar-toggler" type="button" @click="toggleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" :class="{ 'show': isNavbarCollapsed }">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active" v-for="link in links" :key="link.id">
+                            <router-link v-if="displayDashLink(link.path.name)" :class="activeLink(link.path.name)" :to="link.path">{{ link.linkName }}</router-link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </div>
@@ -32,7 +40,7 @@ export default defineComponent({
 
         console.log(route.name);
 
-        const linkClass = reactive<String[]>(["btn","btn-outline-dark"]);
+        const linkClass = reactive<String[]>(["nav-link"]);
         const linkActive = ref<String>("active");
 
         function activeLink(path: String) {
@@ -44,10 +52,18 @@ export default defineComponent({
             return (path !== "dashboard" && path !== "community") || localStorage.getItem('userData') !== null;
         }
 
+        let isNavbarCollapsed = ref<boolean>(false);
+
+        function toggleNavbar() {
+            isNavbarCollapsed.value = !isNavbarCollapsed.value;
+        }
+
         return {
             links,
             activeLink,
-            displayDashLink
+            displayDashLink,
+            isNavbarCollapsed,
+            toggleNavbar
         }
     },
 })
