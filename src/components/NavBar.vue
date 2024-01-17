@@ -1,23 +1,19 @@
-<template>
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
-            <div class="container">
-                <a class="navbar-brand" href="#">KMWALLET</a>
-
-                <button class="navbar-toggler" type="button" @click="toggleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" :class="{ 'show': isNavbarCollapsed }">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active" v-for="link in links" :key="link.id">
-                            <router-link v-if="displayDashLink(link.path.name)" :class="activeLink(link.path.name)" :to="link.path">{{ link.linkName }}</router-link>
-                        </li>
-                    </ul>
-                </div>
+<template>                
+    <header class="bg-gray-700 text-white">
+        <nav class="flex justify-between items-center w-[88%] mx-auto">
+            <div><img class="h-12" src="../assets/cooltext450867828282349.png" alt="..."></div>
+            <div :class="navPos" class="absolute md:static bg-gray-700 md:min-h-fit min-h-[44vh] left-0 md:w-auto w-full flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+                    <li v-for="link in links" :key="link.id">
+                        <router-link class="hover:text-yellow-200 font-serif font-extrabold" v-if="displayDashLink(link.path.name)" :to="link.path">{{ link.linkName }}</router-link>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ion-icon @click="onToggleMenu()" :name="iconName" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
         </nav>
-    </div>
+    </header>
 </template>
 
 <script lang="ts">
@@ -38,32 +34,30 @@ export default defineComponent({
             { linkId: 6, linkName: "Dashboard", path: { name: "dashboard" } },
         ])
 
-        console.log(route.name);
-
-        const linkClass = reactive<String[]>(["nav-link"]);
-        const linkActive = ref<String>("active");
-
-        function activeLink(path: String) {
-            if (route.name == path) return [...linkClass, linkActive.value];
-            return linkClass;
-        }
+        const iconName = ref<string>("menu-outline");
+        const navPos = ref<string>("top-[-100%]");
 
         function displayDashLink(path: String) {
             return (path !== "dashboard" && path !== "community") || localStorage.getItem('userData') !== null;
         }
 
-        let isNavbarCollapsed = ref<boolean>(false);
-
-        function toggleNavbar() {
-            isNavbarCollapsed.value = !isNavbarCollapsed.value;
+        function onToggleMenu() {
+            if (iconName.value === "menu-outline") {
+                iconName.value = "close-outline";
+                navPos.value = "top-12"
+            }
+            else {
+                iconName.value = "menu-outline"
+                navPos.value = "top-[-100%]"
+            }
         }
 
         return {
             links,
-            activeLink,
             displayDashLink,
-            isNavbarCollapsed,
-            toggleNavbar
+            onToggleMenu,
+            iconName,
+            navPos
         }
     },
 })

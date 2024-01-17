@@ -1,6 +1,6 @@
 <template>
+    <nav-bar></nav-bar>
     <div class="signup container">
-        <nav-bar></nav-bar>
         <h1>Signup</h1>
         <form>
             <label for="fname">Enter first name: </label>

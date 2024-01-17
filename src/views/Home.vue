@@ -1,6 +1,6 @@
 <template>
+  <nav-bar></nav-bar>
 	<div class="home container">
-    <nav-bar></nav-bar>
     <div class="row h-100 bg-warning">
       <div class="col-lg-6 col-12"><span>WELCOME TO KMWALLET</span></div>
       <div class="col-lg-6 col-12">

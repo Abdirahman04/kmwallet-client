@@ -1,6 +1,6 @@
 <template>
+    <nav-bar></nav-bar>
     <div class="container">
-        <nav-bar></nav-bar>
         <h1>FAQs</h1>
         <quiz-card
             quizTitle="How do I open an account with kmwallet?"

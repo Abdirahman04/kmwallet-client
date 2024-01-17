@@ -1,6 +1,6 @@
 <template>
+    <nav-bar></nav-bar>
     <div class="login container">
-        <nav-bar></nav-bar>
         <h1>Login</h1>
         <form>
             <label for="email">Enter email: </label>
