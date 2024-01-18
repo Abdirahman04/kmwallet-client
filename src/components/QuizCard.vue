@@ -1,12 +1,10 @@
 <template>
-    <div class="card px-5">
-        <div class="card-body">
-            <h5 class="card-title d-flex justify-content-between">
-                <span>{{ title }}</span>
-                <button class="btn btn-outline-primary ml-auto" @click="displayText">{{ sign }}</button>
-            </h5>
-            <div :class="textClass">{{ text }}</div>
+    <div class="text-gray-300">
+        <div class="flex">
+            <span class="border border-gray-900 p-1 my-1 rounded-md font-semibold">{{ title }}</span>
+            <button class="border border-black px-2 ml-auto" @click="displayText"><i class="fa-solid" :class="sign"></i></button>
         </div>
+        <div class="border border-gray-900 p-1 mr-10" :class="textClass">{{ text }}</div>
     </div>
 </template>
 
@@ -25,18 +23,18 @@ export default defineComponent({
         }
     },
     setup(props) {
-        const sign = ref<string>("+");
+        const sign = ref<string>("fa-plus");
 
-        const textClass = ref<string[]>(["card-text","d-none"]);
+        const textClass = ref<string[]>(["whitespace-normal","hidden"]);
 
         function displayText() {
-            if (sign.value == "+") {
+            if (sign.value == "fa-plus") {
                 textClass.value.pop();
-                sign.value = "-";
+                sign.value = "fa-minus";
             }
             else {
-                textClass.value.push("d-none");
-                sign.value = "+";
+                textClass.value.push("hidden");
+                sign.value = "fa-plus";
             }
         }
 
