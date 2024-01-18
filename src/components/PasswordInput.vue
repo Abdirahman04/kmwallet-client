@@ -1,6 +1,9 @@
 <template>
-    <label :for="forName">{{ text }}</label>
-    <input :type="passwordType" v-model="internalValue" /><button @click.prevent="changePasswordVisibility">see</button><br>
+    <label :for="forName" class="block text-base mb-2">{{ text }}</label>
+    <input :type="passwordType" placeholder="Enter password..." v-model="internalValue" class="border w-[86%] text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" />
+        <button class="px-2 py-1" @click.prevent="changePasswordVisibility">
+            <ion-icon class="text-xl" :name="eye"></ion-icon>
+        </button><br>
 </template>
 
 <script lang="ts">
@@ -31,10 +34,17 @@ export default defineComponent({
         const internalValue = ref<String>(props.value);
 
         const passwordType = ref<String>("password");
+        const eye = ref<string>("eye-off-outline");
 
         function changePasswordVisibility() {
-            if (passwordType.value === "password") passwordType.value = "text";
-            else passwordType.value = "password";
+            if (passwordType.value === "password") {
+                passwordType.value = "text";
+                eye.value = "eye-outline";
+            }
+            else {
+                passwordType.value = "password";
+                eye.value = "eye-off-outline";
+            }
         }
 
         watch(() => internalValue.value, (newValue, oldValue) => {
@@ -43,6 +53,7 @@ export default defineComponent({
 
         return {
             passwordType,
+            eye,
             changePasswordVisibility,
             forName,
             text,
