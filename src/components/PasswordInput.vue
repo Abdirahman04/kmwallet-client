@@ -1,5 +1,5 @@
 <template>
-    <label :for="forName" class="block text-base mb-2">{{ text }}</label>
+    <label :for="forName" class="block text-base mb-2 font-mono">{{ text }}</label>
     <input :type="passwordType" placeholder="Enter password..." v-model="internalValue" class="border w-[86%] text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" />
         <button class="px-2 py-1" @click.prevent="changePasswordVisibility">
             <ion-icon class="text-xl" :name="eye"></ion-icon>

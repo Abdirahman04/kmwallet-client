@@ -2,18 +2,18 @@
 <div class="flex flex-col h-screen">
     <nav-bar></nav-bar>
     <div class="flex flex-grow justify-center items-center bg-indigo-800">
-        <div class="w-96 p-6 shadow-lg bg-white rounded-md">
+        <div class="md:m-0 m-1 w-96 md:p-6 p-7 shadow-lg bg-white rounded-md">
             <h1 class="text-3xl block text-center font-semibold">
                 <ion-icon name="person"></ion-icon>
                 Login
             </h1>
             <hr class="mt-3">
             <div class="mt-3">
-                <label for="email" class="block text-base mb-2">Enter email: </label>
+                <label for="email" class="block text-base mb-2 font-mono">Email address</label>
                 <input placeholder="Enter email..." type="text" v-model="loginUser.email" class="border w-[86%] text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" />
             </div>
             <div class="mt-3">
-                <password-input forName="pass" text="Enter password: " v-model="loginUser.password" @update:value="handleUpdate"></password-input>
+                <password-input forName="pass" text="Password" v-model="loginUser.password" @update:value="handleUpdate"></password-input>
             </div>
             <div class="mt-3 flex justify-between items-center">
                 <div>
