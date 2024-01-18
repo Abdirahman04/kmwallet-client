@@ -4,7 +4,7 @@
     <div class="flex flex-grow justify-center items-center bg-amber-700">
         <div class="md:m-0 m-1 md:w-[40%] w-[98%] bg-white shadow-lg rounded-md p-5">
             <h1 class="text-3xl block text-center font-semibold">
-                <ion-icon name="person-add"></ion-icon>
+                <i class="fa-solid fa-user-plus"></i>
                 Sign up
             </h1>
             <hr class="mt-3">

@@ -4,3 +4,9 @@ export interface CommunityMessage {
     customerId: string,
     timestamp: string
 }
+
+export interface SendMessage {
+    message: string,
+    timestamp: string,
+    customerId: string
+}
