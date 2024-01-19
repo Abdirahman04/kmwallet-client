@@ -1,9 +1,9 @@
 <template>
     <div class="flex flex-col h-screen">
         <div class="flex justify-between bg-black px-10 py-3">
-            <button @click="goBack"><i class="text-white fa-solid fa-arrow-left"></i></button>
+            <button @click="goBack" class="text-3xl"><i class="text-white fa-solid fa-arrow-left"></i></button>
             <h1 class="font-mono font-bold text-3xl text-white">Profile</h1>
-            <button @click="logout"><i class="text-white fa-solid fa-arrow-right-from-bracket"></i></button>
+            <button @click="logout" class="text-3xl"><i class="text-white fa-solid fa-arrow-right-from-bracket"></i></button>
         </div>
         <div class="flex flex-grow px-12 items-center">
             <div class="px-4 py-2 bg-white border-2 border-yellow-600 rounded-md w-1/2">
