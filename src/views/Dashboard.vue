@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col h-screen">
         <div class="w-full flex justify-between items-center mx-auto bg-amber-950 px-32 py-2">
-            <button @click="backBtn"><i class="fa-solid fa-house"></i></button>
+            <button class="text-3xl" @click="backBtn"><i class="fa-solid fa-house"></i></button>
             <h1 class="text-3xl font-semibold text-cyan-500">Dashboard</h1>
             <button class="font-bold rounded-md bg-red-600 text-white px-4 py-1 hover:bg-transparent hover:text-red-600 border-2 border-red-600" @click="logout">logout</button>
         </div>

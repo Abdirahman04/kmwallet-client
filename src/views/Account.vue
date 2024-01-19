@@ -19,6 +19,16 @@
                     <button class="bg-black text-white rounded-full px-4 py-1" @click="goTo('withdraw')"><i class="fa-solid fa-arrow-down"></i></button>
                     <button class="bg-black text-white rounded-full px-4 py-1" @click="goTo('transfer')"><i class="fa-solid fa-location-arrow"></i></button>
                 </div>
+                <div class="bg-white mt-3 px-3 py-1 border rounded-sm w-3/4" v-if="previousTransactions.length !== 0">
+                    <div class="p-1 mt-2 border border-black" v-for="transaction in previousTransactions" :key="transaction.transactionId">
+                        <div>{{ transaction.transactionId }}</div>
+                        <div>{{ transaction.transactionType }}</div>
+                        <div>{{ transaction.balance }}</div>
+                    </div>
+                    <div class="flex justify-center items-center">
+                        <button class="absolute bottom-4 px-2 rounded-xl border border-black hover:bg-black hover:text-white" @click="goTo('previoustransactions')">Show more</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -28,7 +38,9 @@
 import { defineComponent, onMounted, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { Account } from '@/types/accounts'
+import { Transaction } from '@/types/transactions'
 import BackButton from '@/components/BackButton.vue';
+import { getData } from '@/assets/apiService'
 
 export default defineComponent({
   components: { BackButton },
@@ -42,14 +54,36 @@ export default defineComponent({
             balance: 0
         })
 
+        const previousTransactions = reactive<Transaction[]>([]);
+
+        function getSampleTransactions(arr: Array<Transaction>) {
+            if (arr.length >= 3) {
+                for (let i = 0; i < 3; i++) {
+                    previousTransactions.push(arr[i]);
+                }
+            }
+            else {
+                for (const tran of arr) {
+                    previousTransactions.push(tran);
+                }
+            }
+        }
+
+        console.log(previousTransactions);
+
         onMounted(() => {
             const accountData = localStorage.getItem("accountData");
             if (accountData !== null) {
                 const accountLock = JSON.parse(accountData);
-                account.accountId = accountLock.accountId;
-                account.customerId = accountLock.customerId;
-                account.accountType = accountLock.accountType;
-                account.balance = accountLock.balance;
+                const path = `account/${accountLock.accountId}`;
+                getData(path).then(res => res.json()).then(data => {
+                    account.accountId = data.accountId;
+                    account.customerId = data.customerId;
+                    account.accountType = data.accountType;
+                    account.balance = data.balance;
+                    
+                    getSampleTransactions(data.transactions);
+                })
             }
         })
 
@@ -71,7 +105,8 @@ export default defineComponent({
             back,
             account,
             logout,
-            goTo
+            goTo,
+            previousTransactions
         }
     },
 })
