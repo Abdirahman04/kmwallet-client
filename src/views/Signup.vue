@@ -1,7 +1,7 @@
 <template>
 <div class="flex flex-col h-screen">
     <nav-bar></nav-bar>
-    <div class="flex flex-grow justify-center items-center bg-amber-700">
+    <div class="flex flex-grow justify-center items-center bg-blue-500">
         <div class="md:m-0 m-1 md:w-[40%] w-[98%] bg-white shadow-lg rounded-md p-5">
             <h1 class="text-3xl block text-center font-semibold">
                 <i class="fa-solid fa-user-plus"></i>
@@ -32,11 +32,11 @@
             </div>
             <div class="mt-5 flex">
                 <div>
-                    <span class="font-light">Already have an account? </span><a href="/#/login" class="text-amber-700 font-semibold">sign in</a>
+                    <span class="font-light">Already have an account? </span><a href="/#/login" class="text-blue-500 font-semibold">sign in</a>
                 </div>
             </div>
             <div class="mt-5">
-                <button @click="postCustomer" class="rounded-md py-1 w-full bg-amber-700 text-white hover:bg-transparent hover:text-amber-700 border-2 border-amber-700">Submit</button>
+                <button @click="postCustomer" class="rounded-md py-1 w-full bg-blue-500 text-white hover:bg-transparent hover:text-blue-500 border-2 border-blue-500">Submit</button>
             </div>
         </div>
     </div>

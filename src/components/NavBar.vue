@@ -1,8 +1,8 @@
 <template>                
-    <header class="bg-gray-700 text-white">
+    <header class="bg-slate-600 text-white py-1 z-10">
         <nav class="flex justify-between items-center w-[88%] mx-auto">
             <div><img class="h-12" src="../assets/cooltext450867828282349.png" alt="..."></div>
-            <div :class="navPos" class="absolute md:static bg-gray-700 md:min-h-fit min-h-[44vh] left-0 md:w-auto w-full flex items-center px-5">
+            <div :class="navPos" class="bg-slate-600 absolute md:static md:min-h-fit min-h-[44vh] left-0 md:w-auto w-full flex items-center px-5">
                 <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
                     <li v-for="link in links" :key="link.id">
                         <router-link class="hover:text-yellow-200 font-serif font-extrabold" v-if="displayDashLink(link.path.name)" :to="link.path">{{ link.linkName }}</router-link>

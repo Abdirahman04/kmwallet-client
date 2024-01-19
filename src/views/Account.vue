@@ -11,7 +11,7 @@
                     <h2 class="text-center text-xl font-mono font-extrabold">{{ account.accountId }}</h2>
                     <div class="flex justify-between px-10 mt-8">
                         <span class="text-lg font-bold">Balance: </span>
-                        <span class="text-lg font-mono font-bold">{{ account.balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}</span>
+                        <span class="text-lg font-mono font-bold text-amber-300">{{ account.balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}</span>
                     </div>
                 </div>
                 <div class="flex justify-between text-2xl px-1 w-1/2 mt-4">
@@ -19,14 +19,14 @@
                     <button class="bg-black text-white rounded-full px-4 py-1" @click="goTo('withdraw')"><i class="fa-solid fa-arrow-down"></i></button>
                     <button class="bg-black text-white rounded-full px-4 py-1" @click="goTo('transfer')"><i class="fa-solid fa-location-arrow"></i></button>
                 </div>
-                <div class="bg-white mt-3 px-3 py-1 border rounded-sm w-3/4" v-if="previousTransactions.length !== 0">
-                    <div class="p-1 mt-2 border border-black" v-for="transaction in previousTransactions" :key="transaction.transactionId">
+                <div class="bg-blue-600 bg-opacity-30 rounded-md mt-3 px-3 py-2 w-3/4" v-if="previousTransactions.length !== 0">
+                    <div class="p-1 border border-black rounded-lg" v-for="transaction in previousTransactions" :key="transaction.transactionId">
                         <div>{{ transaction.transactionId }}</div>
                         <div>{{ transaction.transactionType }}</div>
                         <div>{{ transaction.balance }}</div>
                     </div>
                     <div class="flex justify-center items-center">
-                        <button class="absolute bottom-4 px-2 rounded-xl border border-black hover:bg-black hover:text-white" @click="goTo('previoustransactions')">Show more</button>
+                        <button class="absolute bottom-9 px-2 rounded-xl border border-black hover:bg-black hover:text-white" @click="goTo('previoustransactions')">Show more</button>
                     </div>
                 </div>
             </div>
