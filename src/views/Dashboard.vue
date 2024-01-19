@@ -1,9 +1,15 @@
 <template>
+    <div class="flex flex-col h-screen">
+        <div class="flex justify-between items-center mx-auto bg-amber-950 px-5 py-2">
+            <button @click="backBtn"><i class="fa-solid fa-house"></i></button>
+            <h1 class="text-3xl font-semibold text-cyan-500">Dashboard</h1>
+            <button class="bg-red-600 text-white px-4 py-1 hover:bg-transparent hover:text-red-600 border-2 border-red-600" @click="logout">logout</button>
+        </div>
+        <div class="flex flex-col flex-grow bg-slate-300">
+            <h2 class="text-lime-700">Welcome, {{ user.firstName }} {{ user.lastName }}</h2>
+        </div>
+    </div>
     <div class="container">
-        <h1>Dashboard</h1>
-        <h2>Welcome, {{ user.firstName }} {{ user.lastName }}</h2>
-        <button class="btn btn-info" @click="backBtn">&lt;</button>
-        <button class="btn btn-danger" @click="logout">logout</button>
         <button class="btn btn-warning" @click="addAccountBtn">Add +</button>
         <button class="btn btn-primary" @click="goToProfile">Profile</button>
         <div class="container">
