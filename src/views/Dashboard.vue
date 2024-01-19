@@ -18,7 +18,7 @@
                 </div>
                 <div @click="addAccountBtn" class="flex justify-between w-1/2 bg-lime-300 mt-3 px-7 py-2 rounded-md shadow-md border border-black">
                     <span class="font-thin font-serif text-xl">Add account</span>
-                    <span class="text-xl"><i class="fa-solid fa-plus"></i></span>
+                    <span class="text-xl"><i class="fa-solid" :class="addAccountSign"></i></span>
                 </div>
             </div>
         </div>
@@ -49,9 +49,12 @@ export default defineComponent({
             password: ""
         });
 
-        let visible = ref<boolean>(false);
+        const visible = ref<boolean>(false);
+        const addAccountSign = ref<string>("fa-plus");
 
         function addAccountBtn() {
+            if (visible.value) addAccountSign.value = "fa-plus";
+            else addAccountSign.value = "fa-minus";
             visible.value = !visible.value;
         }
 
@@ -110,7 +113,8 @@ export default defineComponent({
             addAccountBtn,
             visible,
             goToAccount,
-            goToProfile
+            goToProfile,
+            addAccountSign
         }
     },
 })

@@ -1,19 +1,38 @@
 <template>
-    <div class="container">
-        <h1>Profile</h1>
-        <back-button path="dashboard" btntitle="Back"></back-button>
-        <form>
-            <label for="fname">Enter first name: </label>
-            <input type="text" v-model="form.firstName" /><br>
-            <label for="lname">Enter last name: </label>
-            <input type="text" v-model="form.lastName" /><br>
-            <label for="email">Enter email: </label>
-            <input type="text" v-model="form.email" /><br>
-            <label for="phone">Enter phone number: </label>
-            <input type="text" v-model="form.phoneNumber" /><br>
-            <button class="btn btn-warning" @click="updateCustomer">Save</button>
-            <button class="btn btn-danger" @click="deleteCustomer">Delete</button>
-        </form>
+    <div class="flex flex-col h-screen">
+        <div class="flex justify-between bg-black px-10 py-3">
+            <button @click="goBack"><i class="text-white fa-solid fa-arrow-left"></i></button>
+            <h1 class="font-mono font-bold text-3xl text-white">Profile</h1>
+            <button @click="logout"><i class="text-white fa-solid fa-arrow-right-from-bracket"></i></button>
+        </div>
+        <div class="flex flex-grow px-12 items-center">
+            <div class="px-4 py-2 bg-white border-2 border-yellow-600 rounded-md w-1/2">
+                <div class="mt-3">
+                    <label class="block text-lg" for="fname">First name</label>
+                    <input class="block mt-2 text-xl font-serif font-bold" type="text" v-model="form.firstName" />
+                    <hr>
+                </div>
+                <div class="mt-3">
+                    <label class="block text-lg" for="lname">Last name</label>
+                    <input class="block mt-2 text-xl font-serif font-bold" type="text" v-model="form.lastName" />
+                    <hr>
+                </div>
+                <div class="mt-3">
+                    <label class="block text-lg" for="email">Email address</label>
+                    <input class="block mt-2 text-xl font-serif font-bold" type="text" v-model="form.email" />
+                    <hr>
+                </div>
+                <div class="mt-3">
+                    <label class="block text-lg" for="phone">Phone number</label>
+                    <input class="block mt-2 text-xl font-serif font-bold" type="text" v-model="form.phoneNumber" />
+                    <hr>
+                </div>
+                <div class="mt-4 flex justify-between px-3 gap-5">
+                    <div><button class="bg-green-500 px-16 py-1.5 rounded-lg font-mono font-bold" @click="updateCustomer">Save</button></div>
+                    <div><button class="bg-red-500 px-16 py-1.5 rounded-lg font-mono font-bold" @click="deleteCustomer">Delete</button></div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -77,10 +96,21 @@ export default defineComponent({
             }
         }
 
+        function goBack() {
+            router.push({ name: "dashboard" });
+        }
+
+        function logout() {
+            localStorage.clear();
+            router.push({ name: "home" });
+        }
+
         return{
             form,
             updateCustomer,
-            deleteCustomer
+            deleteCustomer,
+            goBack,
+            logout
         }
     },
 })
