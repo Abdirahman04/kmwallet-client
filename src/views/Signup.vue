@@ -63,7 +63,7 @@ export default defineComponent({
             phoneNumber: "",
             password: "",
         })
-        const cpass = ref<String>("");
+        const cpass = ref<string>("");
 
         function handleUpdatePass(newValue: string) {
             form.password = newValue;

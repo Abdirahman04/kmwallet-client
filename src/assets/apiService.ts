@@ -34,6 +34,12 @@ export function putData(path: string, body: Object) {
 
 export function deleteData(path: string) {
     const url = urlTemp + path;
+    const options = {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }
 
-    return fetch(url);
+    return fetch(url, options);
 }

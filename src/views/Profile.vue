@@ -86,7 +86,7 @@ export default defineComponent({
         function deleteCustomer() {
             let ans = confirm("Are you sure you want to delete your customer account?");
             if(ans) {
-                const path = `customer,${form.customerId}`;
+                const path = `customer/${form.customerId}`;
                 deleteData(path).then(res => {
                     if (res.ok) {
                         localStorage.clear();

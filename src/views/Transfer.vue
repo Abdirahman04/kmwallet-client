@@ -10,7 +10,7 @@
                 <label class="block mt-2" for="balance">Enter amount</label>
                 <input class="block mt-2" type="number" v-model="transferBody.balance" />
                 <label class="block mt-2" for="balance">Enter recipient ID</label>
-                <input class="block mt-2" type="number" v-model="transferBody.targetAccount" />
+                <input class="block mt-2" type="text" v-model="transferBody.targetAccount" />
                 <button class="bg-yellow-600 rounded-md py-1 mt-3 w-full text-white font-bold font-mono border-2 border-yellow-600 hover:bg-transparent hover:text-yellow-600" @click="transfer">Send</button>
             </div>
         </div>
